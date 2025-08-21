@@ -17,7 +17,7 @@ function ensureAuthenticated(request: Request, response: Response, next: NextFun
       throw new AppError("JWT token not found", 401)
     }
 
-    const [, token] = authHeader.split("")
+    const [, token] = authHeader.split(" ")
 
     const { role, sub: user_id } = verify(token, authConfig.jwt.secret) as TokenPayload
 
@@ -32,3 +32,5 @@ function ensureAuthenticated(request: Request, response: Response, next: NextFun
     throw new AppError("Invalid JWT token", 401)
   }
 }
+
+export { ensureAuthenticated }
