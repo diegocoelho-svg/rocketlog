@@ -28,7 +28,6 @@ class DeliveryLogsController {
       throw new AppError("change status to shipped")
     }
 
-
     await prisma.deliveryLog.create({
       data: {
         deliveryId: delivery_id,
